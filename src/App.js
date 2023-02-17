@@ -1,24 +1,30 @@
 import React from "react";
-import Button from "./Button";
-import { GoBell } from "react-icons/go";
+import ButtonPage from "./pages/ButtonPage";
+import Accordion from "./components/Accordion";
 
 function App() {
-  const handleClick = () => {
-    console.log("clicked");
-  };
+
+
+    const items = [
+
+        {   id:'ere',
+            label:'Can I use React on a project?',
+            content:'You can use react on any project'
+        },
+        {   id:'3435',
+            label:'Can I use React on a project?',
+            content:'You can use react on any project'
+        },
+        {   id:'343',
+            label:'Can I use React on a project?',
+            content:'You can use react on any project'
+        },
+    ]
+
   return (
     <div>
-      <div>
-        <Button primary={true} className="mb-5" onClick={handleClick}>
-          <GoBell />
-          Ring Bell
-        </Button>
-      </div>
-      <div>
-        <Button success outline rounded>
-          Buy
-        </Button>
-      </div>
+        <Accordion items={items} />
+     
     </div>
   );
 }
