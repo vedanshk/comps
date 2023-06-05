@@ -1,5 +1,8 @@
-function Table({ data, config }) {
+function Table({ data, config , keyFn}) {
   const renderedHeaders = config.map((column) => {
+    if(column.header){
+        return column.header(column.label);
+    }
     return <th key={column.label}>{column.label}</th>;
   });
 
@@ -7,7 +10,7 @@ function Table({ data, config }) {
     const renderedCell = config.map((column) => {
       return <td className="p-2" key={column.label}>{column.render(dataItem)}</td>;
     });
-    return <tr className="border-b">{renderedCell}</tr>;
+    return <tr key={keyFn(dataItem)} className="border-b">{renderedCell}</tr>;
   });
   return (
     <table className="table-auto border-spacing-2">
